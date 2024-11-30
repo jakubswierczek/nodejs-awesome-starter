@@ -2,14 +2,9 @@ import * as process from "node:process";
 
 import * as Pino from "pino";
 
-export type LogLevel =
-  | "silent"
-  | "trace"
-  | "debug"
-  | "info"
-  | "warn"
-  | "error"
-  | "fatal";
+import { envVariables } from "../env/node-env.js";
+import { LogLevel } from "./log-level.js";
+
 export interface Logger {
   silent(
     object: Record<string, unknown>,
@@ -59,7 +54,7 @@ export interface Logger {
   ): Logger;
 }
 export const logger: Logger = Pino.pino({
-  level: process.env.PINO_LOG_LEVEL || "info",
+  level: envVariables.LOGGER_LEVEL,
   formatters: {
     bindings: (bindings) => {
       return {

@@ -7,6 +7,8 @@ import factory from "./node-app-factory.js";
 const app = factory.createApp();
 
 app.get("/", (c) => {
+  const logger = c.get("logger");
+  logger.info({ file: "index.ts" }, "Hello world action");
   return c.json({ message: "Hello World!" });
 });
 

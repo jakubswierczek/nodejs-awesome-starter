@@ -23,7 +23,7 @@ export default createFactory<{ Bindings: Bindings; Variables: Variables }>({
       await next();
     });
     app.use(requestId());
-    app.use(honoLogger(logger.info));
+    app.use(honoLogger((str, ...args: string[]) => logger.info(str, args)));
     app.use(async (c, next) => {
       const requestId = c.get("requestId");
       const path = getPath(c.req.raw);
