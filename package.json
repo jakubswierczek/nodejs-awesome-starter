@@ -2,9 +2,18 @@
   "name": "nodejs-awesome-starter",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "build": "tsc -b",
+    "dev": "tsx watch --env-file=.env src/index.ts",
+    "debug": "tsx --env-file=.env --inspect-brk src/index.ts",
+    "start": "node dist/index.js",
+    "test:watch": "node --env-file=.env.test  --import tsx --test --watch src/**/*.spec.ts\"",
+    "test": "node --env-file=.env.test  --import tsx --test src/**/*.spec.ts"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +21,25 @@
   "packageManager": "pnpm@9.14.4+sha512.c8180b3fbe4e4bca02c94234717896b5529740a6cbadf19fa78254270403ea2f27d4e1d46a08a0f56c89b63dc8ebfd3ee53326da720273794e6200fcf0d184ab",
   "engines": {
     "node": ">=22.11"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.7",
+    "hono": "^4.6.12",
+    "pino": "^9.5.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.16.0",
+    "@types/node": "^22.10.1",
+    "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "globals": "^15.12.0",
+    "prettier": "^3.4.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.16.0"
   }
 }
