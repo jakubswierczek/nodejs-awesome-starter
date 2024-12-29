@@ -1,11 +1,11 @@
-import { Hono } from "hono";
-import { createFactory } from "hono/factory";
-import { logger as honoLogger } from "hono/logger";
-import { requestId } from "hono/request-id";
-import { getPath } from "hono/utils/url";
+import { Hono } from 'hono';
+import { createFactory } from 'hono/factory';
+import { logger as honoLogger } from 'hono/logger';
+import { requestId } from 'hono/request-id';
+import { getPath } from 'hono/utils/url';
 
-import { AppEnvVariables, envVariables } from "./env/node-env.js";
-import logger, { Logger } from "./logger/index.js";
+import { AppEnvVariables, envVariables } from './env/node-env.js';
+import logger, { Logger } from './logger/index.js';
 
 export type Bindings = Record<string, unknown> & AppEnvVariables;
 
@@ -25,14 +25,14 @@ export default createFactory<{ Bindings: Bindings; Variables: Variables }>({
     app.use(requestId());
     app.use(honoLogger((str, ...args: string[]) => logger.info(str, args)));
     app.use(async (c, next) => {
-      const requestId = c.get("requestId");
+      const requestId = c.get('requestId');
       const path = getPath(c.req.raw);
       const requestScopeLogger = logger.child({
-        service: "api",
+        service: 'api',
         requestId,
         path,
       });
-      c.set("logger", requestScopeLogger);
+      c.set('logger', requestScopeLogger);
       await next();
     });
   },
