@@ -1,52 +1,24 @@
-import * as process from "node:process";
+import * as process from 'node:process';
 
-import * as Pino from "pino";
+import * as Pino from 'pino';
 
-import { envVariables } from "../env/node-env.js";
-import { LogLevel } from "./log-level.js";
+import { envVariables } from '../env/node-env.js';
+import type { LogLevel } from './log-level.js';
 
 export interface Logger {
-  silent(
-    object: Record<string, unknown>,
-    message: string,
-    ...args: unknown[]
-  ): void;
+  silent(object: Record<string, unknown>, message: string, ...args: unknown[]): void;
   silent(message: string, ...args: unknown[]): void;
-  trace(
-    object: Record<string, unknown>,
-    message: string,
-    ...args: unknown[]
-  ): void;
+  trace(object: Record<string, unknown>, message: string, ...args: unknown[]): void;
   trace(message: string, ...args: unknown[]): void;
-  debug(
-    object: Record<string, unknown>,
-    message: string,
-    ...args: unknown[]
-  ): void;
+  debug(object: Record<string, unknown>, message: string, ...args: unknown[]): void;
   debug(message: string, ...args: unknown[]): void;
-  info(
-    object: Record<string, unknown>,
-    message: string,
-    ...args: unknown[]
-  ): void;
+  info(object: Record<string, unknown>, message: string, ...args: unknown[]): void;
   info(message: string, ...args: unknown[]): void;
-  warn(
-    object: Record<string, unknown>,
-    message: string,
-    ...args: unknown[]
-  ): void;
+  warn(object: Record<string, unknown>, message: string, ...args: unknown[]): void;
   warn(message: string, ...args: unknown[]): void;
-  error(
-    object: Record<string, unknown>,
-    message: string,
-    ...args: unknown[]
-  ): void;
+  error(object: Record<string, unknown>, message: string, ...args: unknown[]): void;
   error(message: string, ...args: unknown[]): void;
-  fatal(
-    object: Record<string, unknown>,
-    message: string,
-    ...args: unknown[]
-  ): void;
+  fatal(object: Record<string, unknown>, message: string, ...args: unknown[]): void;
   fatal(message: string, ...args: unknown[]): void;
   child(
     bindings: { service: string } & Record<string, unknown>,

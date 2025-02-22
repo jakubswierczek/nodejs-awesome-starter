@@ -1,11 +1,11 @@
-import { Hono } from 'hono';
+import type { Hono } from 'hono';
 import { createFactory } from 'hono/factory';
 import { logger as honoLogger } from 'hono/logger';
 import { requestId } from 'hono/request-id';
 import { getPath } from 'hono/utils/url';
 
-import { AppEnvVariables, envVariables } from './env/node-env.js';
-import logger, { Logger } from './logger/index.js';
+import { type AppEnvVariables, envVariables } from './env/node-env.js';
+import logger, { type Logger } from './logger/index.js';
 
 export type Bindings = Record<string, unknown> & AppEnvVariables;
 
